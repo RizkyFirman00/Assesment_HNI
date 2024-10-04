@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hni_project/view/pages/list_characters.dart';
+import 'package:hni_project/view/pages/characters_list_page.dart';
 import 'package:hni_project/view_model/character_vm.dart';
 
 class ChooseHouse extends StatelessWidget {

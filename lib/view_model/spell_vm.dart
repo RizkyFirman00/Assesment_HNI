@@ -13,7 +13,7 @@ class SpellViewModel extends ChangeNotifier {
 
   Future<void> fetchSpells() async {
     try {
-      isLoading = false;
+      isLoading = true;
       notifyListeners();
       List<Spell> fetchedSpells = await apiService.fetchAllSpells();
       _log.info(fetchedSpells);

@@ -5,7 +5,7 @@ import 'package:hni_project/view_model/character_vm.dart';
 import 'package:hni_project/view_model/spell_vm.dart';
 import 'package:provider/provider.dart';
 import 'package:get/get.dart';
-import 'view/pages/home.dart';
+import 'view/pages/main_menu.dart';
 
 void main() {
   runApp(const MainApp());

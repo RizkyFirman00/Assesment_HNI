@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hni_project/view/pages/choose_house.dart';
-import 'package:hni_project/view/pages/list_spells.dart';
+import 'package:hni_project/view/pages/spells_list_page.dart';
 import 'package:hni_project/view/widgets/big_button.dart';
 import 'package:provider/provider.dart';
 import '../../view_model/character_vm.dart';

@@ -8,8 +8,6 @@ enum CharacterCategory {
   gryffindor,
   slytherin,
   ravenclaw,
-  students,
-  staff,
 }
 
 class CharacterViewModel extends ChangeNotifier {
@@ -47,15 +45,10 @@ class CharacterViewModel extends ChangeNotifier {
           fetchedCharacters =
           await apiService.fetchCharactersByHouse('ravenclaw');
           break;
-        case CharacterCategory.students:
-          fetchedCharacters = await apiService.fetchCharactersStudents();
-          break;
-        case CharacterCategory.staff:
-          fetchedCharacters = await apiService.fetchCharactersStaff();
-          break;
       }
       await Future.delayed(Duration(seconds: 1));
       _character = fetchedCharacters;
+      _character.sort((a,b) => a.name.compareTo(b.name));
       currentCategory = category;
     } catch (e) {
       _log.warning(e);
