@@ -30,8 +30,9 @@ class BigButton extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon),
-            Text(text),
+            Icon(icon, size: 110,),
+            SizedBox(height: 10),
+            Text(text,style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600,),),
           ],
         ),
       ),

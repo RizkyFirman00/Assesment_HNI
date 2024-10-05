@@ -20,12 +20,12 @@ class _HomeState extends State<Home> {
         child: Padding(
           padding: const EdgeInsets.all(25.0),
           child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               BigButton(
                 icon: Icons.person,
-                text: "Characters",
+                text: "CHARACTERS",
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const ChooseHouse()));
@@ -34,10 +34,10 @@ class _HomeState extends State<Home> {
               const SizedBox(height: 30),
               BigButton(
                 icon: Icons.shield_moon,
-                text: "Spells",
+                text: "SPELLS",
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ListSpells()));
+                      MaterialPageRoute(builder: (context) => const ListSpells()));
                 },
               ),
             ],

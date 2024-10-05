@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hni_project/view_model/spell_vm.dart';
 import 'package:provider/provider.dart';
 import '../../model/spells.dart';
@@ -95,7 +96,8 @@ class _ListSpellsState extends State<ListSpells> {
       body: SafeArea(
         child: Consumer<SpellViewModel>(
           builder: (context, spellViewModel, child) {
-            final spells = query.isEmpty ? spellViewModel.spell : filteredSpells;
+            final spells =
+                query.isEmpty ? spellViewModel.spell : filteredSpells;
             return spellViewModel.isLoading
                 ? Center(
                     child: CircularProgressIndicator(
@@ -104,34 +106,75 @@ class _ListSpellsState extends State<ListSpells> {
                   )
                 : spells.isEmpty
                     ? Center(
-                        child: Text("Data Not Found"),
+                        child: Text(
+                          "Data Not Found",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w600),
+                        ),
                       )
-                    : ListView.builder(
-                        itemCount: spells.length,
-                        itemBuilder: (context, index) {
-                          final spell = spells[index];
-                          return ListTile(
-                            onTap: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      title: Text(spell.name),
-                                      content: Text(spell.description),
-                                      actions: [
-                                        TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text("Close"))
-                                      ],
-                                    );
-                                  });
-                            },
-                            title: Text(spell.name),
-                          );
-                        },
-                      );
+                    : Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 15.0),
+                      child: ListView.builder(
+                          itemCount: spells.length,
+                          itemBuilder: (context, index) {
+                            final spell = spells[index];
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20.0),
+                              child: Card(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: ListTile(
+                                  onTap: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: Text(spell.name,
+                                                style: GoogleFonts.lateef(
+                                                  textStyle: TextStyle(
+                                                      fontSize: 34,
+                                                      height: 0.9,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                )),
+                                            content: Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Description: ',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold, ),
+                                                ),
+                                                Expanded(
+                                                    child:
+                                                        Text(spell.description)),
+                                              ],
+                                            ),
+                                            actions: [
+                                              TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text("Close"))
+                                            ],
+                                          );
+                                        });
+                                  },
+                                  title: Text(
+                                    spell.name,
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                    );
           },
         ),
       ),

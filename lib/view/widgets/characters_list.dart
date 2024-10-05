@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hni_project/model/character.dart';
 import 'package:hni_project/view_model/character_vm.dart';
 import 'package:provider/provider.dart';
@@ -69,7 +70,17 @@ class CharactersGrid extends StatelessWidget {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20),
                                   ),
-                                  title: Text(character.name),
+                                  title: Center(
+                                    child: Text(
+                                      character.name,
+                                      style: GoogleFonts.lateef(
+                                        textStyle: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 36
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                   content: SingleChildScrollView(
                                     child: Column(
                                       crossAxisAlignment:
@@ -217,16 +228,18 @@ class CharactersGrid extends StatelessWidget {
 
   Widget _buildCharacterDetail(String title, String? value) {
     if (value == null || value.isEmpty) {
-      return SizedBox(); // Tidak menampilkan apa-apa jika nilai null atau kosong
+      return const SizedBox();
     }
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            '$title: ',
-            style: TextStyle(fontWeight: FontWeight.bold),
+          Center(
+            child: Text(
+              '$title: ',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
           ),
           Expanded(
             child: Text(value),
