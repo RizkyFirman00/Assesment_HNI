@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hni_project/view/pages/choose_house.dart';
 import 'package:hni_project/view/pages/spells_list_page.dart';
 import 'package:hni_project/view/widgets/big_button.dart';
 import 'package:provider/provider.dart';
 import '../../view_model/character_vm.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class MainMenu extends StatefulWidget {
+  const MainMenu({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<MainMenu> createState() => _MainMenuState();
 }
 
-class _HomeState extends State<Home> {
+class _MainMenuState extends State<MainMenu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,8 +28,7 @@ class _HomeState extends State<Home> {
                 icon: Icons.person,
                 text: "CHARACTERS",
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const ChooseHouse()));
+                  Get.to(() => const ChooseHouse());
                 },
               ),
               const SizedBox(height: 30),
@@ -36,8 +36,7 @@ class _HomeState extends State<Home> {
                 icon: Icons.shield_moon,
                 text: "SPELLS",
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const ListSpells()));
+                  Get.to(() => const ListSpells());
                 },
               ),
             ],

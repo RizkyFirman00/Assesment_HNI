@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hni_project/model/character.dart';
 import 'package:hni_project/view_model/character_vm.dart';
@@ -63,114 +64,98 @@ class CharactersGrid extends StatelessWidget {
                         child: InkWell(
                           borderRadius: BorderRadius.circular(20),
                           onTap: () {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return AlertDialog(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20),
+                            Get.dialog(AlertDialog(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              title: Center(
+                                child: Text(
+                                  character.name,
+                                  style: GoogleFonts.lateef(
+                                    textStyle: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 36),
                                   ),
-                                  title: Center(
-                                    child: Text(
-                                      character.name,
-                                      style: GoogleFonts.lateef(
-                                        textStyle: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 36
+                                ),
+                              ),
+                              content: SingleChildScrollView(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    if (character.image != null &&
+                                        character.image!.isNotEmpty)
+                                      Center(
+                                        child: Image.network(
+                                          character.image!,
+                                          height: 150,
+                                          fit: BoxFit.cover,
                                         ),
                                       ),
-                                    ),
-                                  ),
-                                  content: SingleChildScrollView(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        if (character.image != null &&
-                                            character.image!.isNotEmpty)
-                                          Center(
-                                            child: Image.network(
-                                              character.image!,
-                                              height: 150,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        const SizedBox(height: 10),
-                                        _buildCharacterDetail(
-                                            'Alternate Names',
-                                            character.alternateNames
-                                                ?.join(", ")),
-                                        _buildCharacterDetail(
-                                            'Species', character.species),
-                                        _buildCharacterDetail(
-                                            'Gender', character.gender),
-                                        _buildCharacterDetail(
-                                            'House', character.house),
-                                        _buildCharacterDetail('Date of Birth',
-                                            character.dateOfBirth),
-                                        _buildCharacterDetail('Year of Birth',
-                                            character.yearOfBirth?.toString()),
-                                        _buildCharacterDetail(
-                                            'Wizard',
-                                            character.wizard == true
-                                                ? 'Yes'
-                                                : 'No'),
-                                        _buildCharacterDetail(
-                                            'Ancestry', character.ancestry),
-                                        _buildCharacterDetail(
-                                            'Eye Colour', character.eyeColour),
-                                        _buildCharacterDetail('Hair Colour',
-                                            character.hairColour),
-                                        if (character.wand != null &&
-                                            (character.wand!['wood']!
-                                                    .isNotEmpty ||
-                                                character.wand!['core']!
-                                                    .isNotEmpty ||
-                                                character.wand!['length'] !=
-                                                    null))
-                                          _buildCharacterDetail(
-                                            'Wand',
-                                            '${character.wand!['wood']?.isNotEmpty == true ? character.wand!['wood'] : 'Unknown wood'}, '
-                                                '${character.wand!['core']?.isNotEmpty == true ? character.wand!['core'] : 'Unknown core'}, '
-                                                '${character.wand!['length'] != null ? character.wand!['length'] : 'Unknown length'}',
-                                          ),
-                                        _buildCharacterDetail(
-                                            'Patronus', character.patronus),
-                                        _buildCharacterDetail(
-                                            'Hogwarts Student',
-                                            character.hogwartsStudent == true
-                                                ? 'Yes'
-                                                : 'No'),
-                                        _buildCharacterDetail(
-                                            'Hogwarts Staff',
-                                            character.hogwartsStaff == true
-                                                ? 'Yes'
-                                                : 'No'),
-                                        _buildCharacterDetail(
-                                            'Actor', character.actors),
-                                        _buildCharacterDetail(
-                                            'Alternate Actors',
-                                            character.alternateActors
-                                                ?.join(", ")),
-                                        _buildCharacterDetail(
-                                            'Alive',
-                                            character.alive == true
-                                                ? 'Yes'
-                                                : 'No'),
-                                      ],
-                                    ),
-                                  ),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: Text('Close'),
-                                    ),
+                                    const SizedBox(height: 10),
+                                    _buildCharacterDetail('Alternate Names',
+                                        character.alternateNames?.join(", ")),
+                                    _buildCharacterDetail(
+                                        'Species', character.species),
+                                    _buildCharacterDetail(
+                                        'Gender', character.gender),
+                                    _buildCharacterDetail(
+                                        'House', character.house),
+                                    _buildCharacterDetail(
+                                        'Date of Birth', character.dateOfBirth),
+                                    _buildCharacterDetail('Year of Birth',
+                                        character.yearOfBirth?.toString()),
+                                    _buildCharacterDetail(
+                                        'Wizard',
+                                        character.wizard == true
+                                            ? 'Yes'
+                                            : 'No'),
+                                    _buildCharacterDetail(
+                                        'Ancestry', character.ancestry),
+                                    _buildCharacterDetail(
+                                        'Eye Colour', character.eyeColour),
+                                    _buildCharacterDetail(
+                                        'Hair Colour', character.hairColour),
+                                    if (character.wand != null &&
+                                        (character.wand!['wood']!.isNotEmpty ||
+                                            character
+                                                .wand!['core']!.isNotEmpty ||
+                                            character.wand!['length'] != null))
+                                      _buildCharacterDetail(
+                                        'Wand',
+                                        '${character.wand!['wood']?.isNotEmpty == true ? character.wand!['wood'] : 'Unknown wood'}, '
+                                            '${character.wand!['core']?.isNotEmpty == true ? character.wand!['core'] : 'Unknown core'}, '
+                                            '${character.wand!['length'] != null ? character.wand!['length'] : 'Unknown length'}',
+                                      ),
+                                    _buildCharacterDetail(
+                                        'Patronus', character.patronus),
+                                    _buildCharacterDetail(
+                                        'Hogwarts Student',
+                                        character.hogwartsStudent == true
+                                            ? 'Yes'
+                                            : 'No'),
+                                    _buildCharacterDetail(
+                                        'Hogwarts Staff',
+                                        character.hogwartsStaff == true
+                                            ? 'Yes'
+                                            : 'No'),
+                                    _buildCharacterDetail(
+                                        'Actor', character.actors),
+                                    _buildCharacterDetail('Alternate Actors',
+                                        character.alternateActors?.join(", ")),
+                                    _buildCharacterDetail('Alive',
+                                        character.alive == true ? 'Yes' : 'No'),
                                   ],
-                                );
-                              },
-                            );
+                                ),
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Get.back();
+                                  },
+                                  child: Text('Close'),
+                                ),
+                              ],
+                            ));
                           },
                           child: Column(
                             mainAxisSize: MainAxisSize.min,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hni_project/view_model/spell_vm.dart';
 import 'package:provider/provider.dart';
@@ -65,7 +66,7 @@ class _ListSpellsState extends State<ListSpells> {
           padding: EdgeInsets.only(left: 10.0),
           child: IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              Get.back();
             },
             icon: Icon(Icons.keyboard_arrow_left_rounded),
           ),
@@ -156,7 +157,7 @@ class _ListSpellsState extends State<ListSpells> {
                                             actions: [
                                               TextButton(
                                                   onPressed: () {
-                                                    Navigator.pop(context);
+                                                    Get.back();
                                                   },
                                                   child: Text("Close"))
                                             ],

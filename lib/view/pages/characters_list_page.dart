@@ -4,16 +4,16 @@ import 'package:hni_project/view_model/character_vm.dart';
 import 'package:provider/provider.dart';
 import '../../model/character.dart';
 
-class ListCharacters extends StatefulWidget {
+class CharactersListPage extends StatefulWidget {
   final CharacterCategory house;
 
-  const ListCharacters({super.key, required this.house});
+  const CharactersListPage({super.key, required this.house});
 
   @override
-  State<ListCharacters> createState() => _ListCharactersState();
+  State<CharactersListPage> createState() => _CharactersListPageState();
 }
 
-class _ListCharactersState extends State<ListCharacters> {
+class _CharactersListPageState extends State<CharactersListPage> {
   bool isSearchButtonClicked = false;
   final TextEditingController _searchController = TextEditingController();
   final FocusNode _searchFocus = FocusNode();

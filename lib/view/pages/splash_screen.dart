@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hni_project/view/pages/main_menu.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,8 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(
       Duration(seconds: 2),
       () {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => Home()));
+        Get.off(()=> const MainMenu());
       },
     );
   }

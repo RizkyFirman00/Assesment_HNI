@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hni_project/view/pages/characters_list_page.dart';
 import 'package:hni_project/view_model/character_vm.dart';
 
@@ -17,7 +18,7 @@ class ChooseHouse extends StatelessWidget {
           padding: EdgeInsets.only(left: 10.0),
           child: IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              Get.back();
             },
             icon: Icon(Icons.keyboard_arrow_left_rounded),
           ),
@@ -32,10 +33,7 @@ class ChooseHouse extends StatelessWidget {
                 child: Center(
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ListCharacters(house: CharacterCategory.ravenclaw)));
+                      Get.to(() => CharactersListPage(house: CharacterCategory.ravenclaw));
                     },
                     borderRadius: BorderRadius.circular(15),
                     child: Container(
@@ -61,10 +59,7 @@ class ChooseHouse extends StatelessWidget {
                 child: Center(
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ListCharacters(house: CharacterCategory.gryffindor)));
+                      Get.to(() => CharactersListPage(house: CharacterCategory.gryffindor));
                     },
                     borderRadius: BorderRadius.circular(15),
                     child: Container(
@@ -90,10 +85,7 @@ class ChooseHouse extends StatelessWidget {
                 child: Center(
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ListCharacters(house: CharacterCategory.slytherin)));
+                      Get.to(() => CharactersListPage(house: CharacterCategory.slytherin));
                     },
                     borderRadius: BorderRadius.circular(15),
                     child: Container(
