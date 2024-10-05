@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hni_project/view/widgets/characters_list.dart';
 import 'package:hni_project/view_model/character_vm.dart';
 import 'package:provider/provider.dart';
-import 'package:simple_logger/simple_logger.dart';
 import '../../model/character.dart';
 
 class ListCharacters extends StatefulWidget {
