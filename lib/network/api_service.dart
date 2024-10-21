@@ -6,7 +6,7 @@ import 'package:simple_logger/simple_logger.dart';
 class ApiService {
   final Dio _dio = Dio();
   final SimpleLogger _log = SimpleLogger();
-  final String baseUrl = "https://hp-api.onrender.com/api";
+  final String baseUrl = "THIS API URL";
 
   Future<List<Character>> fetchAllCharacters() async {
     try {
